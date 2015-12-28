@@ -1,0 +1,21 @@
+{
+  "name": "PhonegapOnsenUi",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cgadgetru/PhonegapOnsenUi",
+  "authors": [
+    "Vasiliy Ignatev <v.ignatiev@globus-ltd.com>"
+  ],
+  "description": "Phonegap starter kit",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "compass-breakpoint": "breakpoint-sass#~2.6.1",
+    "susy": "~2.2.9"
+  }
+}

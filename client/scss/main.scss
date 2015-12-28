@@ -1,0 +1,7 @@
+@import "../../build/bower_components/susy/sass/susy";
+@import "../../build/bower_components/compass-breakpoint/stylesheets/breakpoint";
+body{
+  font-size: 100%;
+  @include container(80em);
+}
+
