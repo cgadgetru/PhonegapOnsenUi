@@ -90,6 +90,8 @@ gulp.task('sass', function () {
     gulp.src(client.styles)
         // Converts Sass into CSS with Gulp Sass
         .pipe(sass())
+        .pipe(csso())
+        .pipe(rename('main.'+version+'.css'))
         // Outputs CSS files in the css folder
         .pipe(gulp.dest(phonegap.styles));
 })
