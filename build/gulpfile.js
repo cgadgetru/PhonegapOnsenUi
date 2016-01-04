@@ -21,12 +21,13 @@ var version = (function(){
 var client = {
     temp: './temp/',
     vendors: '../client/vendors/',
+    css:'../client/css/**/**/**.*',
     styles: ['../client/scss/main.scss'],
     stylesWatch: ['../client/scss/**/*.scss'],
     scriptsCoffee: ['../client/coffee/**/*.coffee'],
     scriptsVendors: [
-        '../client/vendors/jquery.js',
-        '../client/vendors/json2.js'
+        '../client/vendors/angular.js',
+        '../client/vendors/onsenui.js'
     ],
     images: ['../client/img/**/*'],
     fonts: ['../client/fonts/*'],
@@ -67,7 +68,6 @@ gulp.task('scripts', function () {
     gulp.src(phonegap.scripts+'/**.*', { read: false })
         .pipe(rm());
 
-
     gulp.src(client.scriptsCoffee)
         .pipe(changed(client.vendors))
         .pipe(resolveDependencies({
@@ -84,6 +84,10 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('sass', function () {
+    gulp.src(phonegap.styles+'/**.*', { read: false })
+        .pipe(rm());
+    gulp.src(client.css)
+        .pipe(gulp.dest(phonegap.styles));
     // gulp.src locates the source files for the process.
     // This globbing function tells gulp to use all files
     // ending with .scss or .sass within the scss folder.
@@ -94,20 +98,7 @@ gulp.task('sass', function () {
         .pipe(rename('main.'+version+'.css'))
         // Outputs CSS files in the css folder
         .pipe(gulp.dest(phonegap.styles));
-})
-
-/*gulp.task('styles', function () {
-    gulp.src('../phonegap/www/css*//**.*', { read: false })
-        .pipe(rm());
-    gulp.src(paths.styles)
-        .pipe(changed(paths_phonegap.styles))
-        .pipe(less())
-        .on('error', console.error)
-        .pipe(myth())
-        .pipe(csso())
-        .pipe(rename('main.'+version+'.css'))
-        .pipe(gulp.dest(paths_phonegap.styles))
-});*/
+});
 
 gulp.task('images', function () {
     gulp.src(client.images)
