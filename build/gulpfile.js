@@ -101,6 +101,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('images', function () {
+
     gulp.src(client.images)
         .pipe(changed(phonegap.images))
         .pipe(imageMin({optimizationLevel: 5}))
