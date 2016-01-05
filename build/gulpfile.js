@@ -27,6 +27,7 @@ var client = {
     scriptsCoffee: ['../client/coffee/**/*.coffee'],
     scriptsVendors: [
         '../client/vendors/angular.js',
+        '../client/vendors/angular-ui-router.js',
         '../client/vendors/onsenui.js'
     ],
     images: ['../client/img/**/*'],
@@ -124,8 +125,8 @@ gulp.task('clear', function () {
 });
 
 gulp.task('watch', function () {
-    /*gulp.watch(paths.scriptsCoffee, ['scripts','rpl']);
-    gulp.watch(paths.scriptsVendors, ['scripts','rpl']);
+    gulp.watch(client.scriptsCoffee, ['scripts','rpl']);
+     /*gulp.watch(paths.scriptsVendors, ['scripts','rpl']);
     gulp.watch(paths.scriptsTemplates, ['scripts','rpl']);*/
     gulp.watch(client.stylesWatch, ['sass','rpl']);
     gulp.watch(client.images, ['images']);

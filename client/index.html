@@ -21,34 +21,43 @@
         <script src="js/vendors.js"></script>
         <script src="js/main.js"></script>
     <!-- endbuild -->
-    <script>
-        var module = ons.bootstrap('my-app', ['onsen']);
-        module.controller('AppController', function($scope) { });
-        module.controller('PageController', function($scope) {
-            ons.ready(function() {
-                // Init code here
-            });
-        });
-    </script>
+
     <title>OnsenUi Project</title>
 </head>
 
-<body ng-controller="AppController">
+<body ng-controller="AppCtrl">
 <ons-navigator title="Navigator" var="myNavigator">
-    <ons-page>
+    <ons-page ng-controller="MainPageCtrl">
         <ons-toolbar>
             <div class="center">Simple Navigation</div>
         </ons-toolbar>
         <div style="text-align: center">
             <br>
-            <ons-button modifier="light" onclick="myNavigator.pushPage('page1.html', { animation : 'slide' } )">
+            <ons-button modifier="light" ui-sref="page2">
                 Push Page
             </ons-button>
         </div>
     </ons-page>
 </ons-navigator>
 
-<ons-template id="page1.html">
+<ons-template id="page1.html" ng-controller="SecondPageCtlr">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-back-button ui-sref="^">Back</ons-back-button>
+            </div>
+            <div class="center">Page 2</div>
+        </ons-toolbar>
+
+        <div style="text-align: center">
+            <br />
+            <ons-button modifier="light" onclick="myNavigator.popPage()">
+                Pop Page
+            </ons-button>
+        </div>
+    </ons-page>
+</ons-template>
+<ons-template id="page2.html" ng-controller="SecondPageCtlr">
     <ons-page>
         <ons-toolbar>
             <div class="left">
