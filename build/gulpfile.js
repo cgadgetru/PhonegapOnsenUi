@@ -33,14 +33,16 @@ var client = {
     images: ['../client/img/**/*'],
     fonts: ['../client/fonts/*'],
     res: ['../client/res/**/**/**.*'],
-    indexHtml:['../client/index.html']
+    indexHtml:['../client/index.html'],
+    views:['../client/views/**/**/**.*']
 };
 var phonegap = {
     styles: '../phonegap/www/css/',
     scripts: '../phonegap/www/js/',
     images: '../phonegap/www/img/',
     fonts: '../phonegap/www/fonts/',
-    res: '../phonegap/www/res/'
+    res: '../phonegap/www/res/',
+    views:'../phonegap/www/views/'
 };
 gulp.task('rpl',function(){
     gulp.src('../client/index.html')
@@ -119,6 +121,11 @@ gulp.task('resources', function () {
         .pipe(gulp.dest(phonegap.res))
 });
 
+gulp.task('views', function () {
+    gulp.src(client.views)
+        .pipe(gulp.dest(phonegap.views))
+});
+
 gulp.task('clear', function () {
 //    gulp.src(paths.tempJS[0])
 //        .pipe(rm())
@@ -133,6 +140,7 @@ gulp.task('watch', function () {
     gulp.watch(client.fonts, ['fonts']);
     gulp.watch(client.indexHtml, ['rpl']);
     gulp.watch(client.res, ['resources']);
+    gulp.watch(client.views, ['views']);
 });
 gulp.task('pbuild',function(){
     gulp.src('../phonegap/zip/**/**/**.*', { read: false })
@@ -145,9 +153,9 @@ gulp.task('pbuild',function(){
 });
 
 
-gulp.task('build', ['scripts', 'styles', 'images', 'fonts','resources','rpl','clear']);
+gulp.task('build', ['scripts', 'styles', 'images', 'fonts','resources','views','rpl','clear']);
 
-gulp.task('default', [/**/'scripts', 'sass','images', 'fonts','resources', 'rpl', 'watch', /*'clear'*/]);
+gulp.task('default', [/**/'scripts', 'sass','images', 'fonts','resources','views', 'rpl', 'watch', /*'clear'*/]);
 
 gulp.task('zip',['pbuild']);
 
