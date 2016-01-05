@@ -7,6 +7,7 @@ phonegap/www/js/
 phonegap/www/spec/
 phonegap/www/spec.html
 phonegap/www/res/
+phonegap/www/views/
 phonegap/icon.png
 /phonegap/zip*
 phonegap/www/index.html
